@@ -195,10 +195,12 @@ function formatDisplayTime(slotTime) {
   return `${displayHour}:00 ${ampm}`;
 }
 
-// Start server
+// ==================== START ====================
 app.listen(PORT, () => {
   console.log(`🚀 Appointment Booking Server (Supabase) running at http://localhost:${PORT}`);
   if (!supabaseUrl || !supabaseKey || supabaseUrl.includes('your_project_url_here')) {
     console.log('⚠️  WARNING: Supabase credentials not set. API calls will fail.');
   }
 });
+
+module.exports = app;
