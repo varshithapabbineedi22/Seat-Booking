@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book appointment slots easily. Select a date, view available times, and reserve your slot instantly.">
+  <title>Appointment Slot Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Animated background particles -->
+  <div class="bg-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 id="app-title">Appointment Booking</h1>
+          <p class="subtitle">Select a date and book your preferred time slot</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Date Picker Section -->
+    <section class="date-section">
+      <div class="date-card">
+        <label for="date-picker" class="date-label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Choose Date
+        </label>
+        <input type="date" id="date-picker" class="date-input">
+        <div class="selected-date-display" id="selected-date-display"></div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar" id="stats-bar" style="display:none;">
+      <div class="stat-item">
+        <span class="stat-number" id="stat-available">0</span>
+        <span class="stat-label">Available</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number stat-booked" id="stat-booked">0</span>
+        <span class="stat-label">Booked</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number stat-total" id="stat-total">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+    </section>
+
+    <!-- Slots Grid -->
+    <section class="slots-section">
+      <div class="slots-grid" id="slots-grid">
+        <div class="empty-state" id="empty-state">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <p>Select a date to view available slots</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selection Action Bar -->
+    <div class="selection-bar" id="selection-bar">
+      <div class="selection-info">
+        <span class="selection-count" id="selection-count">0</span>
+        <span class="selection-text">slots selected</span>
+      </div>
+      <button class="book-btn" id="book-selected-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        Book Selected Slots
+      </button>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-icon" id="modal-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h2 class="modal-title" id="modal-title">Success!</h2>
+      <p class="modal-message" id="modal-message">Your appointment has been booked.</p>
+      <p class="modal-detail" id="modal-detail"></p>
+      <button class="modal-btn" id="modal-btn" onclick="closeModal()">Got it</button>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="spinner"></div>
+    <p>Processing...</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
